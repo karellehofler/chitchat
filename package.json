@@ -1,0 +1,8 @@
+{
+    "name": "chat-app",
+    "version": "0.0.1",
+    "description": "A chat app that let's users send and read messages",
+    "dependencies": {
+        "express": "^4.17.1"
+    }
+}
