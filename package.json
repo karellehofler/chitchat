@@ -1,8 +1,26 @@
 {
-    "name": "chat-app",
-    "version": "0.0.1",
-    "description": "A chat app that let's users send and read messages",
-    "dependencies": {
-        "express": "^4.17.1"
-    }
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": false,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "reactjs",
+    "socketio",
+    "real-time",
+    "chatapp",
+    "feathers"
+  ],
+  "author": "Karelle Hofler",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.15",
+    "socket.io": "^4.4.0"
+  }
 }
