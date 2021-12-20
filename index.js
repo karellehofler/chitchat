@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const http = require('http');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const db = require('./config/index');
+
 const { Server } = require('socket.io');
 app.use(cors());
 
@@ -14,8 +17,9 @@ const io = new Server(server, {
     },
 });
 
-var messages = {};
-
+mongoose.connect(db.mongoURI).then(() => {
+    console.log('MongoDB Connected');
+}).catch(err => console.log(err));
 
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
