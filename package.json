@@ -9,7 +9,8 @@
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "start": "node index.js",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "heroku-postbuild": "cd client && npm && npm run build"
   },
   "keywords": [
     "reactjs",

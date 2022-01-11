@@ -3,11 +3,11 @@ const path = require('path');
 const app = express();
 const http = require('http');
 const cors = require('cors');
-const mongoose = require('mongoose');
 const db = require('./config/index');
 
 const { Server } = require('socket.io');
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 const server = http.createServer(app);
 
@@ -17,10 +17,6 @@ const io = new Server(server, {
         methods: ["GET", "POST"],
     },
 });
-
-mongoose.connect(db.mongoURI).then(() => {
-    console.log('MongoDB Connected');
-}).catch(err => console.log(err));
 
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
@@ -45,15 +41,9 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("receive_message", { message: 'Welcome!', username: 'Anon' });
 });
 
-app.use(express.static(path.join(__dirname, 'client/build')));
-
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+    res.sendFile(path.join(__dirname+'client/build/index.html'));
 })
-
-// app.get('/', (req, res) => {
-//     req.send('Server is up and running.');
-// })
 
 const port = process.env.PORT || 3001;
 
