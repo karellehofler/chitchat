@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const http = require('http');
 const cors = require('cors');
@@ -44,10 +45,18 @@ io.on("connection", (socket) => {
     socket.broadcast.emit("receive_message", { message: 'Welcome!', username: 'Anon' });
 });
 
-app.get('/', (req, res) => {
-    req.send('Server is up and running.');
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
 })
 
-server.listen(3001, () => {
+// app.get('/', (req, res) => {
+//     req.send('Server is up and running.');
+// })
+
+const port = process.env.PORT || 3001;
+
+server.listen(port, () => {
     console.log('listening on *:3001');
 })
