@@ -22,23 +22,24 @@ io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);
 
     socket.on("join_room", data => {
-        socket.join(data);
-        console.log(`User with ID: ${socket.id} joined room ${data}`);
+        socket.join(data);    
+        socket.broadcast.emit(`User with ID: ${socket.id} joined room ${data}`);
+        console.log(data);
     });
 
     socket.on("send_message", data => {
         socket.to(data.room).emit("receive_message", data);
     });
 
-    socket.on("save-client-data", (data) => {
-        // var clientId = client
-    })
+    // socket.on("save-client-data", (data) => {
+    //     // var clientId = client
+    // })
 
     socket.on("disconnect", () => {
         console.log("User Disconnected", socket.id)
     });
 
-    socket.broadcast.emit("receive_message", { message: 'Welcome!', username: 'Anon' });
+    // socket.broadcast.emit("receive_message", { message: 'Welcome!', username: 'Anon' });
 });
 
 app.get('*', (req, res) => {
