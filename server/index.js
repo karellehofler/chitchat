@@ -7,16 +7,25 @@ const db = require('./config/index');
 
 const { Server } = require('socket.io');
 app.use(cors());
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static(path.join(__dirname, 'react-client/build')));
 
 const server = http.createServer(app);
 
+//DEV
 const io = new Server(server, {
     cors: {
         origin: "http://localhost:3000",
         methods: ["GET", "POST"],
     },
 });
+
+//PRODUCTION
+// const io = new Server(server, {
+//     cors: {
+//         origin: "https://chit-chat-rooms.netlify.app",
+//         methods: ["GET", "POST"],
+//     },
+// });
 
 io.on("connection", (socket) => {
     console.log(`User Connected: ${socket.id}`);

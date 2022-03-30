@@ -14,7 +14,7 @@ const MessageBubble = ({ message, float }) => (
     <div className="row">
         {/* {align == "right" : } */}
         <div className={`chat-bubble ${float === 'left' ? `left` : `right`}`}>
-            <div className="card-panel light-blue darken-1 small">
+            <div className={`card-panel ${ float === 'right' ? ` pink lighten-1` : `blue darken-2`} small`}>
                 <span className="white-text flow-text">{message.message}</span>
             </div>
             <span>{message.username} | {message.time}</span>
