@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import "materialize-css/dist/css/materialize.min.css";
 import './App.scss';
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,9 +21,9 @@ function App() {
     }
   }
 
-  useEffect(() => {
-    if(username !== '') setChat(true);
-  }, [])
+  // useEffect(() => {
+  //   if(username !== '') setChat(true);
+  // }, [username])
 
   return (
     <div className="App">
@@ -32,7 +32,7 @@ function App() {
       setUsername={(e) => setUsername(e.target.value)} 
       handleClick={joinRoom} />
       :
-      <ChatRoom socket={socket} username={username} room={room} />
+      <ChatRoom socket={socket} username={username} room={room} setRoom={setRoom} />
       }
     </div>
   );

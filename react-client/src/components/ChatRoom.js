@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { MessageInput } from './inputs';
-import Menu from './menu/Menu';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 
 const RoomHeader = ({ room }) => (
     <div className="chat-room-header z-depth-2">
-        <Menu />
         <div className="chat-room-title">
             {room && <h2>{room}</h2>}
         </div>
@@ -35,7 +33,7 @@ const MessageFeed = ({ messages, user }) => (
     </div>
 )
 
-export default function ChatRoom({ socket, username, room }) {
+export default function ChatRoom({ socket, username, room, setRoom }) {
     
     const [ messages, setMessages ] = useState([]);
     const [ currentMessage, setCurrentMessage ] = useState("");

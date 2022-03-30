@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { chatRooms } from '../../enums';
-import M from "materialize-css/dist/js/materialize.min.js";
+// import M from "materialize-css/dist/js/materialize.min.js";
 
 const InputContainer = ({ children, isInline, width }) => (
     <div className={!width && `row`} style={{ width: `${width}`}}>

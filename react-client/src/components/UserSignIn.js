@@ -2,7 +2,7 @@ import React from 'react';
 import { UsernameInput } from './inputs';
 import { Branding } from './displays';
 
-export default function UserSignIn({ username, setUsername, handleClick }) {
+export default function UserSignIn({ username, setUsername, handleClick, setChat }) {
 
     return (
         <div id="chat-user">
