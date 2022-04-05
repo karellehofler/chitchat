@@ -7,7 +7,7 @@ import ChatRoom from './components/ChatRoom';
 import UserSignIn from './components/UserSignIn';
 // import useLocalStorage from './hooks/useLocalStorage';
 
-const socket = io.connect("https://chit-chat-rooms-server.herokuapp.com/");
+const socket = io.connect(process.env.REACT_APP_WEB_SOCKET_SERVER);
 
 function App() {
   const [ username, setUsername ] = useState('');
